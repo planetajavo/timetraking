@@ -8,6 +8,7 @@
 
 
 10.times do |i|
-Project.create name: "Project #{i}", description: "Description of Project #{i}"
+p = Project.create name: "Project #{i}", description: "Description of Project #{i}"
+p.entries.create hours: rand(1..3), minutes: rand(1..59), comments: "Comment of Project #{i}", date: Date.new(2014,3,i+1)
 end
 

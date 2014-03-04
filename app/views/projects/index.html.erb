@@ -1,0 +1,27 @@
+
+<div class="background">
+	
+	<ul class="center listnone">
+
+		<h1>List of projects</h1>
+		<% @projects.each do |project| %>
+			<% if project.description.blank? %>
+			<li class="orange"><%= project.name %></li>
+
+			<% else %>
+
+			<li class="orange">
+				<%= project.name %>
+				<br><span class="black">: this project is about <%= project.description %></span>
+				<br>
+				<% project.entries.each do |entry| %>
+				<span class="grey"><%= "total hours of  entries -- " "#{entry.hours}" " hours and " "#{entry.minutes}" "minutes"%></span>
+				<hr>
+				<% end %>
+			</li>
+			<% end %>
+			
+
+		<% end %>
+	</ul>
+</div>
