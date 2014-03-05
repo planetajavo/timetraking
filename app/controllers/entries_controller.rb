@@ -3,6 +3,8 @@ class EntriesController < ApplicationController
 	def index
 		@project = Project.find params[:project_id]
 		@entries = @project.entries
+
+		render 'index', layout: 'project'
 	end
 
 	def new
@@ -20,8 +22,6 @@ class EntriesController < ApplicationController
 	    	else
 	      		render 'new'
 	    	end
-		
-
 
   	end
 

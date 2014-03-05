@@ -5,13 +5,16 @@
 
 		<h1>List of projects</h1>
 		<% @projects.each do |project| %>
+
 			<% if project.description.blank? %>
-			<li class="orange"><%= project.name %></li>
+			<!--<li class="orange"><%= project.name %></li>-->
+			<%= link_to project.name, project_path, {class: "button expand"} %>
 
 			<% else %>
 
 			<li class="orange">
-				<%= project.name %>
+				<!--<%= project.name %>-->
+				<%= link_to project.name, project_path(project.id), {class: "button expand"} %>				
 				<br>
 				<span class="black"><%= project.description %></span>
 				<br>
