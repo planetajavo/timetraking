@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20140304135945) do
     t.integer  "project_id"
     t.integer  "hours"
     t.integer  "minutes"
-    t.integer  "comments"
-    t.integer  "date"
+    t.text     "comments"
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

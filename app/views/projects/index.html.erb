@@ -12,15 +12,16 @@
 
 			<li class="orange">
 				<%= project.name %>
-				<br><span class="black">: this project is about <%= project.description %></span>
+				<br>
+				<span class="black"><%= project.description %></span>
 				<br>
 				<% project.entries.each do |entry| %>
-				<span class="grey"><%= "total hours of  entries -- " "#{entry.hours}" " hours and " "#{entry.minutes}" "minutes"%></span>
-				<hr>
+				<span class="grey"><%= "#{entry.hours}" " hours and " "#{entry.minutes}" "minutes"%></span><br>
+				
 				<% end %>
 			</li>
 			<% end %>
-			
+			<hr class="grey">
 
 		<% end %>
 	</ul>

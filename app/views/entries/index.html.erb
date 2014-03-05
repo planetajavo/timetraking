@@ -5,8 +5,15 @@
  <li> 
 	 <%= entry.hours %> h 
 	 <%= entry.minutes %> m - 
-	 <%= entry.date %> 
+	 <%= entry.date.strftime(format='%A, %d-%m-%Y')%> 
+
  </li> 
+ 
+
  <% end %> 
+
 </ul>
+
+<h2>Total for this project: <%= pluralize(@project.total_hours_in_month(Date.today.month, Date.today.year), 'hour', 'hours')%></h2>
+
 </div>
