@@ -1,6 +1,30 @@
+<div class="row">
+  <div class="small-11 small-centered columns">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">TimeTracker</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
 
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active">
+		 
+          <%= link_to 'Home', "/" %></li>
+        </ul>
 
-<div class="center background">
-<h1 class="orange">This is the particular page of <%= @project.name %></h1>
-<p class="black"><%= @project.description %></p>
+      </section>
+    </nav>
+  </div>
 </div>
+<div class="row">
+  <div class="small-11 small-centered columns">
+  	<h1>This is the particular page of <%= @project.name %></h1>
+	<p><%= @project.description %></p>
+	<%= link_to 'View project entries', project_entries_path(@project.id), {class: "button expand"} %>
+  </div>
+</div>
+

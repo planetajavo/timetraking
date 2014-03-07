@@ -5,7 +5,7 @@ class SiteController < ApplicationController
 	end
 
 	def contact
-		#render 'contact'
+		render 'contact'
 	end
 		
 end

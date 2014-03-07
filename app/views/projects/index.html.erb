@@ -1,31 +1,69 @@
+<div class="row">
+  <div class="small-11 small-centered columns">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">TimeTracker</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
 
-<div class="background">
-	
-	<ul class="center listnone">
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
 
-		<h1>List of projects</h1>
-		<% @projects.each do |project| %>
+          <li class="active">
+		 
+          <%= link_to 'Home', "/" %>
 
-			<% if project.description.blank? %>
-			<!--<li class="orange"><%= project.name %></li>-->
-			<%= link_to project.name, project_path, {class: "button expand"} %>
+          </li>
+        </ul>
 
-			<% else %>
-
-			<li class="orange">
-				<!--<%= project.name %>-->
-				<%= link_to project.name, project_path(project.id), {class: "button expand"} %>				
-				<br>
-				<span class="black"><%= project.description %></span>
-				<br>
-				<% project.entries.each do |entry| %>
-				<span class="grey"><%= "#{entry.hours}" " hours and " "#{entry.minutes}" "minutes"%></span><br>
-				
-				<% end %>
-			</li>
-			<% end %>
-			<hr class="grey">
-
-		<% end %>
-	</ul>
+      </section>
+    </nav>
+  </div>
 </div>
+
+<div class="row">
+  <div class="small-11 small-centered columns">
+	  <ul class="center listnone">
+
+			<h1>List of projects</h1>
+			<% @projects.each do |project| %>
+
+				<% if project.description.blank? %>
+				
+				<%= link_to project.name, project_path, class: "button expand"%>
+
+				<% else %>
+
+				<li>
+					
+					<%= link_to project.name, project_path(project.id), {class: "button expand"} %>				
+					<br>
+					<%= project.description %>
+					<br>
+					<h6>Current project entries:</h6>
+					<br>
+					<br>
+					<% project.entries.each do |entry| %>
+					<%= "#{entry.date}"%>
+					<br>
+					<%=  "#{entry.hours}" " hours " "#{entry.minutes}" "minutes"%>
+					<hr>
+
+					<% end %>
+
+					
+				</li>
+
+				<% end %>
+
+				<h5>Total: <%= pluralize(project.total_hours_in_month(Date.today.month, Date.today.year), 'hour', 'hours')%></h5>
+				<hr>
+
+			<% end %>
+		</ul>
+  </div>
+</div>
+

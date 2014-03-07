@@ -1,19 +1,76 @@
-<div class="background">
-<h1> <%= @project.name %> </h1> 
-<ul> 
- <% @entries.each do |entry| %> 
- <li> 
-	 <%= entry.hours %> h 
-	 <%= entry.minutes %> m - 
-	 <%= entry.date.strftime(format='%A, %d-%m-%Y')%> 
 
- </li> 
- 
 
- <% end %> 
+<div class="row">
+  <div class="small-11 small-centered columns">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">TimeTracker</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+      </ul>
 
-</ul>
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active">
+		 
+          <%= link_to 'Home', "/" %></li>
+        </ul>
 
-<h2>Total for this project: <%= pluralize(@project.total_hours_in_month(Date.today.month, Date.today.year), 'hour', 'hours')%></h2>
-
+      </section>
+    </nav>
+  </div>
 </div>
+
+<div class="row">
+  <div class="small-11 small-centered columns">
+  	<h1> <%= @project.name %> </h1> 
+  	<h3> <%= @project.description %> </h3>
+  	<hr>
+
+  <table>
+    
+      <ul> 
+        <li>
+          <% @entries.each do |entry| %>
+          <tr>
+            <td>
+              <%= entry.hours %> h
+            </td>
+            <td>
+              <%= entry.minutes %> m  
+            </td>
+            <td>
+              <%= entry.date.strftime(format='%A, %d-%m-%Y')%>
+            </td>
+          
+            <td>
+            <%= link_to 'Edit entry', edit_project_entry_path(@project.id, entry.id), class: "label" %>
+            </td>
+            <td>
+            <%= link_to 'Delete entry', project_entry_path(@project.id, entry.id),method: :delete, confirm: 'Are you sure?', class: "label" %>
+            </td>
+          <tr>
+          
+
+        </li> 
+          <% end %> 
+
+      </ul>
+  
+  </table>
+ 
+    
+    <%= flash_message %>
+    
+  
+  
+      
+
+	<h2>Total for this project: <%= pluralize(@project.total_hours_in_month(Date.today.month, Date.today.year), 'hour', 'hours')%></h2>
+	<%= link_to 'Add new entrie', new_project_entry_path(@project), class: "button" %></li>	
+  </div>
+	
+</div>
+
